@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+@theme {
+  --font-inter: "Inter", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+
+  --color-background: #030303;
+  --color-foreground: #ffffff;
+
+  --color-primary: #FF9933;
+  --color-primary-glow: rgba(255, 153, 51, 0.5);
+
+  --color-accent-gold: #FFD700;
+  --color-accent-violet: #8B5CF6;
+  --color-accent-pink: #F472B6;
+  --color-accent-cyan: #22D3EE;
+
+  --color-card: rgba(12, 12, 12, 0.7);
+  --color-card-border: rgba(255, 255, 255, 0.08);
+
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-glow-slow: glow 6s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes glow {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+}
+
+/* Base Styles */
+@layer base {
+  body {
+    color: var(--color-foreground);
+    background: var(--color-background);
+    font-family: var(--font-inter);
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Noise Overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-outfit);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Premium Atmosphere */
+.mesh-gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background: radial-gradient(at 0% 0%, rgba(255, 153, 51, 0.1) 0, transparent 50%),
+              radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.1) 0, transparent 50%),
+              radial-gradient(at 100% 100%, rgba(255, 215, 0, 0.05) 0, transparent 50%),
+              radial-gradient(at 0% 100%, rgba(34, 211, 238, 0.05) 0, transparent 50%);
+  filter: blur(40px);
+}
+
+/* Custom Components */
+@layer components {
+  .glass-card {
+    background-color: var(--color-card);
+    backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid var(--color-card-border);
+    border-radius: 1.25rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+    pointer-events: none;
+  }
+  
+  .premium-button {
+    padding: 0.85rem 1.75rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background-color: var(--color-primary);
+    color: black;
+    box-shadow: 0 0 30px rgba(255, 153, 51, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .premium-button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 0 40px rgba(255, 153, 51, 0.4);
+  }
+
+  .premium-button:active {
+    transform: scale(0.95);
+  }
+
+  .secondary-button {
+    padding: 0.85rem 1.75rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background-color: rgba(255, 255, 255, 0.03);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+  }
+
+  .secondary-button:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px) scale(1.05);
+  }
+
+  .text-shadow-glow {
+    text-shadow: 0 0 15px rgba(255, 153, 51, 0.6);
+  }
+}
+
+/* Layout Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Background Blobs */
+.bg-blob {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: -1;
+  opacity: 0.12;
+  pointer-events: none;
+  animation: float 20s ease-in-out infinite;
+}
+
+.blob-saffron { background: #FF9933; top: -10%; left: -10%; }
+.blob-violet { background: #8B5CF6; bottom: -10%; right: -10%; animation-delay: -5s; }
+.blob-gold { background: #FFD700; top: 30%; right: -10%; animation-delay: -10s; }
