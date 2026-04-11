@@ -1,12 +1,14 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Upload, FileImage, FileVideo, CheckCircle, Loader2, Sparkles, X, AlertCircle } from 'lucide-react';
+import { Upload, FileImage, FileVideo, CheckCircle, Loader2, Sparkles, X, AlertCircle, ArrowLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import { FilesetResolver, HandLandmarker } from '@mediapipe/tasks-vision';
 import { classifyMudra } from '@/lib/mediapipe/classification';
 
 export default function UploadAnalysisPage() {
+  const router = useRouter();
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -102,6 +104,15 @@ export default function UploadAnalysisPage() {
     <div className="pt-32 pb-20 px-6 min-h-screen relative">
       <div className="bg-blob blob-violet -top-40 -left-40" />
       
+      <div className="max-w-4xl mx-auto mb-10">
+        <button 
+          onClick={() => router.back()}
+          className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-all group"
+        >
+          <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+        </button>
+      </div>
+
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-black mb-4">Media <span className="text-accent-pink">Analysis</span></h1>
