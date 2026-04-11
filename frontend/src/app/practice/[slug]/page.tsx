@@ -31,8 +31,28 @@ export default function PracticeModePage() {
   const [hasLanded, setHasLanded] = useState(false);
 
   // Voice Assistant Ref
+  const [voice, setVoice] = useState<SpeechSynthesisVoice | null>(null);
   const lastSpokenRef = useRef<string>("");
   const speechTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const hasGreetedRef = useRef(false);
+  const lastHandSeenRef = useRef<number>(Date.now());
+  const nudgeIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Initialize voices
+  useEffect(() => {
+    const loadVoices = () => {
+      if (typeof window === 'undefined' || !window.speechSynthesis) return;
+      const voices = window.speechSynthesis.getVoices();
+      // Priority for Hindi voices
+      const targetVoice = voices.find(v => v.lang === 'hi-IN') || 
+                          voices.find(v => v.lang.includes('hi')) ||
+                          voices.find(v => v.lang.includes('IN'));
+      setVoice(targetVoice || null);
+    };
+    loadVoices();
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+    return () => { window.speechSynthesis.onvoiceschanged = null; };
+  }, []);
 
   // Speak feedback function
   const speak = useCallback((text: string) => {
@@ -41,27 +61,60 @@ export default function PracticeModePage() {
     // Don't repeat the same thing immediately
     if (text === lastSpokenRef.current) return;
     
-    // Debounce speech
+    // Debounce speech but keep it reactive
     if (speechTimeoutRef.current) clearTimeout(speechTimeoutRef.current);
     
     speechTimeoutRef.current = setTimeout(() => {
       window.speechSynthesis.cancel(); // Stop current speech
       const utterance = new SpeechSynthesisUtterance(text);
+      
+      if (voice) {
+        utterance.voice = voice;
+      }
       utterance.lang = language === 'hi' ? 'hi-IN' : 'en-IN';
-      utterance.rate = 0.95;
-      utterance.pitch = 1.0;
+      utterance.rate = 0.9;
+      utterance.pitch = 1.05; // Slightly higher for a clear 'Guru' tone
+      
       window.speechSynthesis.speak(utterance);
       lastSpokenRef.current = text;
-    }, 400);
-  }, [isVoiceEnabled, language]);
+    }, 300);
+  }, [isVoiceEnabled, language, voice]);
+
+  // Nudge logic: Speak if no hand is seen for 10 seconds
+  useEffect(() => {
+    if (!isCameraActive || !isVoiceEnabled) return;
+
+    nudgeIntervalRef.current = setInterval(() => {
+      const idleTime = Date.now() - lastHandSeenRef.current;
+      if (idleTime > 12000) { // 12 seconds of silence
+        const nudgeMsg = translateFeedback("Adjust your hand position to match the reference image.", language);
+        speak(nudgeMsg);
+        lastHandSeenRef.current = Date.now(); // Reset timer after nudging
+      }
+    }, 5000);
+
+    return () => {
+      if (nudgeIntervalRef.current) clearInterval(nudgeIntervalRef.current);
+    };
+  }, [isCameraActive, isVoiceEnabled, language, speak]);
 
   // Handle detection updates
   const handleUpdate = useCallback((landmarkData: any, mudraData: any[]) => {
-    // Freeze logic: If no hands are detected, don't update the state.
+    // Freeze logic: If no hands are detected, don't update results state, but update idle timer
     if (!landmarkData || !landmarkData.landmarks || landmarkData.landmarks.length === 0) {
       return;
     }
     
+    // Hand is seen!
+    lastHandSeenRef.current = Date.now();
+    
+    // Greet if first time
+    if (!hasGreetedRef.current) {
+      const greeting = translateFeedback("Show your hand to the camera to begin.", language);
+      speak(greeting);
+      hasGreetedRef.current = true;
+    }
+
     setLandmarks(landmarkData);
     
     if (!mudra) return;
@@ -79,24 +132,18 @@ export default function PracticeModePage() {
       
       // Voice feedback for high confidence
       if (targetDetection.confidence > 0.85) {
-        speak(translateFeedback(`Perfect ${mudra.name} detected! Excellent form.`, language));
+        const perfectMsg = language === 'hi' ? `Adbhut! Aapne ${mudra.name} mudra sahi banayi.` : `Perfect ${mudra.name} detected! Excellent form.`;
+        speak(perfectMsg);
       } else if (targetDetection.confidence > 0.4) {
-        // Only speak granular corrections if confidence is decent but not perfect
         speak(translatedMsg);
       }
     } else if (primaryDetection && primaryDetection.name !== "No Mudra Detected") {
-      setConfidence(0.1); // Small confidence because it's the wrong mudra
+      setConfidence(0.1); 
       setBestDetection(primaryDetection.name);
       const wrongMsg = translateFeedback(`Detected ${primaryDetection.name} instead. Try to form ${mudra.name}.`, language);
       setFeedback(wrongMsg);
       speak(wrongMsg);
-    } else {
-      setConfidence(0);
-      setBestDetection(null);
-      const startMsg = translateFeedback("Adjust your hand position to match the reference image.", language);
-      setFeedback(startMsg);
-      // Optional: speak(startMsg); // Might be too repetitive
-    }
+    } 
   }, [mudra, speak, language]);
 
   if (!mudra) {

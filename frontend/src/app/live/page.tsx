@@ -67,6 +67,39 @@ export default function LiveDetectionPage() {
 
   const lastUpdateTime = React.useRef(0);
   
+  // Voice Assistant logic
+  const [voice, setVoice] = useState<SpeechSynthesisVoice | null>(null);
+  const lastSpokenRef = useRef<string>("");
+  const hasGreetedRef = useRef(false);
+
+  useEffect(() => {
+    const loadVoices = () => {
+      if (typeof window === 'undefined' || !window.speechSynthesis) return;
+      const voices = window.speechSynthesis.getVoices();
+      const targetVoice = voices.find(v => v.lang === 'hi-IN') || 
+                          voices.find(v => v.lang.includes('hi')) ||
+                          voices.find(v => v.lang.includes('IN'));
+      setVoice(targetVoice || null);
+    };
+    loadVoices();
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+    return () => { window.speechSynthesis.onvoiceschanged = null; };
+  }, []);
+
+  const speak = React.useCallback((text: string) => {
+    if (typeof window === 'undefined' || !window.speechSynthesis) return;
+    if (text === lastSpokenRef.current) return;
+    
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    if (voice) utterance.voice = voice;
+    utterance.lang = 'hi-IN'; // Default to Hindi for that Guru feel
+    utterance.rate = 0.9;
+    utterance.pitch = 1.05;
+    window.speechSynthesis.speak(utterance);
+    lastSpokenRef.current = text;
+  }, [voice]);
+
   const handleUpdate = React.useCallback((landmarkData: any, mudraData: any[]) => {
     const now = performance.now();
     if (now - lastUpdateTime.current < 30) return;
@@ -78,6 +111,12 @@ export default function LiveDetectionPage() {
       return;
     }
     
+    // Greet if first time
+    if (!hasGreetedRef.current) {
+      speak("Pranaam! Chaliye mudra ka abhyas prarambh karte hain.");
+      hasGreetedRef.current = true;
+    }
+
     setSession(prev => {
       const bestMudra = mudraData && mudraData.length > 0 ? mudraData[0] : null;
       
@@ -151,6 +190,8 @@ export default function LiveDetectionPage() {
             <CameraFeed 
               isActive={isCameraActive} 
               onUpdate={handleUpdate}
+              showLandmarks={showLandmarks}
+              showSkeleton={showSkeleton}
             />
             
             {!isCameraActive && (

@@ -9,6 +9,8 @@ interface CameraFeedProps {
   isActive: boolean;
   onUpdate: (landmarks: any, mudraData: any[]) => void;
   targetMudra?: string;
+  showLandmarks?: boolean;
+  showSkeleton?: boolean;
 }
 
 const HAND_CONNECTIONS = [
@@ -26,7 +28,13 @@ const HAND_CONNECTIONS = [
   [0, 17]
 ];
 
-const CameraFeed = ({ isActive, onUpdate, targetMudra }: CameraFeedProps) => {
+const CameraFeed = ({ 
+  isActive, 
+  onUpdate, 
+  targetMudra,
+  showLandmarks = true,
+  showSkeleton = true
+}: CameraFeedProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const handLandmarkerRef = useRef<HandLandmarker | null>(null);
@@ -158,49 +166,55 @@ const CameraFeed = ({ isActive, onUpdate, targetMudra }: CameraFeedProps) => {
     ctx.lineJoin = 'round';
     
     for (const hand of landmarks) {
-      ctx.lineWidth = 3;
-      ctx.shadowBlur = 12;
-      ctx.shadowColor = "rgba(6, 182, 212, 0.8)";
-      
-      for (const [startIdx, endIdx] of HAND_CONNECTIONS) {
-        const start = hand[startIdx];
-        const end = hand[endIdx];
+      // 1. Draw Skeleton (Connections)
+      if (showSkeleton) {
+        ctx.lineWidth = 3;
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = "rgba(6, 182, 212, 0.8)";
         
-        const startX = start.x * canvas.width;
-        const startY = start.y * canvas.height;
-        const endX = end.x * canvas.width;
-        const endY = end.y * canvas.height;
-        
-        const grad = ctx.createLinearGradient(startX, startY, endX, endY);
-        grad.addColorStop(0, "rgba(6, 182, 212, 0.9)");
-        grad.addColorStop(1, "rgba(168, 85, 247, 0.9)");
-        
-        ctx.strokeStyle = grad;
-        ctx.beginPath();
-        ctx.moveTo(startX, startY);
-        ctx.lineTo(endX, endY);
-        ctx.stroke();
+        for (const [startIdx, endIdx] of HAND_CONNECTIONS) {
+          const start = hand[startIdx];
+          const end = hand[endIdx];
+          
+          const startX = start.x * canvas.width;
+          const startY = start.y * canvas.height;
+          const endX = end.x * canvas.width;
+          const endY = end.y * canvas.height;
+          
+          const grad = ctx.createLinearGradient(startX, startY, endX, endY);
+          grad.addColorStop(0, "rgba(6, 182, 212, 0.9)");
+          grad.addColorStop(1, "rgba(168, 85, 247, 0.9)");
+          
+          ctx.strokeStyle = grad;
+          ctx.beginPath();
+          ctx.moveTo(startX, startY);
+          ctx.lineTo(endX, endY);
+          ctx.stroke();
+        }
       }
       
-      const fingerTips = [4, 8, 12, 16, 20];
-      hand.forEach((lm: any, idx: number) => {
-        const isTip = fingerTips.includes(idx);
-        const cw = lm.x * canvas.width;
-        const ch = lm.y * canvas.height;
-        
-        ctx.beginPath();
-        ctx.arc(cw, ch, isTip ? 6 : 4, 0, 2 * Math.PI);
-        ctx.fillStyle = isTip ? "rgba(236, 72, 153, 0.9)" : "rgba(168, 85, 247, 0.8)";
-        ctx.shadowBlur = isTip ? 18 : 10;
-        ctx.shadowColor = isTip ? "rgba(236, 72, 153, 1)" : "rgba(168, 85, 247, 1)";
-        ctx.fill();
-        
-        ctx.beginPath();
-        ctx.arc(cw, ch, isTip ? 2.5 : 1.5, 0, 2 * Math.PI);
-        ctx.fillStyle = "#FFFFFF";
-        ctx.shadowBlur = 0;
-        ctx.fill();
-      });
+      // 2. Draw Landmarks (Points)
+      if (showLandmarks) {
+        const fingerTips = [4, 8, 12, 16, 20];
+        hand.forEach((lm: any, idx: number) => {
+          const isTip = fingerTips.includes(idx);
+          const cw = lm.x * canvas.width;
+          const ch = lm.y * canvas.height;
+          
+          ctx.beginPath();
+          ctx.arc(cw, ch, isTip ? 6 : 4, 0, 2 * Math.PI);
+          ctx.fillStyle = isTip ? "rgba(236, 72, 153, 0.9)" : "rgba(168, 85, 247, 0.8)";
+          ctx.shadowBlur = isTip ? 18 : 10;
+          ctx.shadowColor = isTip ? "rgba(236, 72, 153, 1)" : "rgba(168, 85, 247, 1)";
+          ctx.fill();
+          
+          ctx.beginPath();
+          ctx.arc(cw, ch, isTip ? 2.5 : 1.5, 0, 2 * Math.PI);
+          ctx.fillStyle = "#FFFFFF";
+          ctx.shadowBlur = 0;
+          ctx.fill();
+        });
+      }
     }
   };
 
