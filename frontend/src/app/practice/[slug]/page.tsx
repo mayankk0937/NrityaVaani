@@ -57,6 +57,11 @@ export default function PracticeModePage() {
 
   // Handle detection updates
   const handleUpdate = useCallback((landmarkData: any, mudraData: any[]) => {
+    // Freeze logic: If no hands are detected, don't update the state.
+    if (!landmarkData || !landmarkData.landmarks || landmarkData.landmarks.length === 0) {
+      return;
+    }
+    
     setLandmarks(landmarkData);
     
     if (!mudra) return;

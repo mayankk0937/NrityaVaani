@@ -71,6 +71,12 @@ export default function LiveDetectionPage() {
     const now = performance.now();
     if (now - lastUpdateTime.current < 30) return;
     lastUpdateTime.current = now;
+
+    // Freeze logic: If no hands are detected, don't update the state.
+    // This allows the user to remove their hand to see the result without it disappearing.
+    if (!landmarkData || !landmarkData.landmarks || landmarkData.landmarks.length === 0) {
+      return;
+    }
     
     setSession(prev => {
       const bestMudra = mudraData && mudraData.length > 0 ? mudraData[0] : null;
