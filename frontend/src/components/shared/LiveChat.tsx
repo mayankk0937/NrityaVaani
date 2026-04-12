@@ -60,7 +60,7 @@ export default function LiveChat() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100]">
+    <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[100]">
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -68,7 +68,7 @@ export default function LiveChat() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="absolute bottom-[70px] right-0 w-[350px] max-w-[90vw] shadow-[0_0_50px_rgba(255,153,51,0.15)] rounded-2xl overflow-hidden glass-card border border-white/10 flex flex-col bg-black/80 backdrop-blur-3xl"
+            className="absolute bottom-[70px] right-0 w-[calc(100vw-2rem)] sm:w-[350px] shadow-[0_0_50px_rgba(255,153,51,0.15)] rounded-2xl overflow-hidden glass-card border border-white/10 flex flex-col bg-black/80 backdrop-blur-3xl"
           >
             {/* Header */}
             <div className="bg-primary/10 p-4 border-b border-white/5 flex items-center justify-between relative overflow-hidden">
@@ -160,7 +160,7 @@ export default function LiveChat() {
                 <input 
                    disabled
                    placeholder="AI processing FAQs currently..."
-                   className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm outline-none text-white/50 opacity-50 cursor-not-allowed"
+                   className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-base outline-none text-white/50 opacity-50 cursor-not-allowed"
                 />
                 <button disabled className="w-10 h-10 rounded-xl bg-primary/20 text-primary flex items-center justify-center opacity-50 cursor-not-allowed">
                   <Send className="w-4 h-4 ml-1" />

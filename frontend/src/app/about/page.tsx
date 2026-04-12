@@ -118,7 +118,7 @@ export default function AboutPage() {
                 </div>
                 
                 <p className="text-xl md:text-2xl text-white/80 leading-relaxed font-medium">
-                  We proudly secured <strong className="text-accent-gold">3rd Prize</strong> in our first hackathon, which validated our idea and boosted our confidence to take NrityaVaani further. This achievement reflects our dedication, innovation, and ability to turn ideas into reality.
+                  We proudly secured <strong className="text-accent-gold">3rd Prize</strong> in our first hackathon, which validated our idea and boosted our confidence to take NrityaVaani further. We also secured <strong className="text-accent-gold">3rd position</strong> at the Inter-College Dron Tech Fest 2026 (Innovative Startup Pitch). These achievements reflect our dedication, innovation, and ability to turn ideas into reality.
                 </p>
               </div>
             </div>
@@ -263,7 +263,7 @@ function TeamMember({ name, role, img, linkedinUrl }: { name: string, role: stri
       <div className="glass-card p-8 border-white/5 flex flex-col items-center text-center group hover:border-accent-cyan/30 transition-colors duration-500">
         <div className="w-32 h-32 rounded-full overflow-hidden mb-6 ring-4 ring-white/5 ring-offset-8 ring-offset-black group-hover:ring-accent-cyan/50 transition-all duration-500 shadow-xl relative">
           <div className="absolute inset-0 bg-accent-cyan/20 opacity-0 group-hover:opacity-100 mix-blend-overlay transition-opacity duration-500 z-10" />
-          <img src={img} alt={name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" />
+          <img src={img} alt={name} className="w-full h-full object-cover grayscale-0 md:grayscale md:group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" />
         </div>
         <h4 className="text-2xl font-black mb-2">{name}</h4>
         <div className="inline-block px-3 py-1 rounded-full bg-white/5 mb-6">

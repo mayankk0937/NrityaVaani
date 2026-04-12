@@ -43,16 +43,16 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4',
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 md:px-6 py-4',
         scrolled ? 'bg-black/80 backdrop-blur-2xl border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.3)] shadow-primary/5' : 'bg-transparent'
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link href="/" className="flex items-center space-x-2 group">
-          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform">
+          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform shrink-0">
             <span className="text-black font-bold text-xl">N</span>
           </div>
-          <span className="text-2xl font-bold tracking-tight text-white font-heading">
+          <span className="text-xl md:text-2xl font-bold tracking-tight text-white font-heading truncate">
             Nritya<span className="text-primary font-extrabold tracking-tight">Vaani</span>
           </span>
         </Link>

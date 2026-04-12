@@ -101,7 +101,7 @@ export default function UploadAnalysisPage() {
   };
 
   return (
-    <div className="pt-32 pb-20 px-6 min-h-screen relative">
+    <div className="pt-32 pb-20 px-4 md:px-6 min-h-screen relative overflow-x-hidden">
       <div className="bg-blob blob-violet -top-40 -left-40" />
       
       <div className="max-w-4xl mx-auto mb-10">
@@ -119,7 +119,7 @@ export default function UploadAnalysisPage() {
           <p className="text-white/40">Upload an image to get detailed AI feedback on your mudras.</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {/* Upload Area */}
           <div className="space-y-6">
             <div 
@@ -208,7 +208,7 @@ export default function UploadAnalysisPage() {
                       <p className="text-white/30 text-xs font-bold uppercase tracking-widest mb-1">{result.handedness} Hand</p>
                       <h2 className="text-3xl font-black text-white mb-6">{result.name}</h2>
                       
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="p-4 bg-black/40 rounded-xl border border-white/5">
                           <p className="text-[10px] text-white/30 font-bold uppercase mb-1">Confidence</p>
                           <div className="flex items-end space-x-2">
