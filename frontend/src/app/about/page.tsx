@@ -56,7 +56,7 @@ export default function AboutPage() {
               <span>The Journey of DivyCoders</span>
             </div>
             <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter">About <span className="text-primary text-shadow-glow">NrityaVaani</span></h1>
-            <p className="text-white/60 text-xl md:text-2xl leading-relaxed font-medium">
+            <p className="text-foreground/90 text-xl md:text-2xl leading-relaxed font-medium">
               An innovative tech-driven initiative that blends Indian classical dance with Artificial Intelligence, 
               aiming to preserve, analyze, and promote traditional art forms like <span className="text-accent-gold italic">Bharatanatyam</span> in the digital era.
             </p>
@@ -66,7 +66,7 @@ export default function AboutPage() {
         {/* OUR STORY */}
         <section>
           <TiltCard className="max-w-5xl mx-auto">
-            <div className="glass-card p-10 md:p-16 relative overflow-hidden border-white/10 group hover:border-primary/30 transition-colors duration-500">
+            <div className="glass-card p-10 md:p-16 relative overflow-hidden border-foreground/10 group hover:border-primary/30 transition-colors duration-500">
               <div className="absolute top-0 right-0 opacity-5 scale-150 -rotate-12 group-hover:rotate-0 transition-transform duration-1000 p-10">
                 <Quote className="w-64 h-64 text-primary" />
               </div>
@@ -78,14 +78,14 @@ export default function AboutPage() {
                   <h2 className="text-4xl md:text-5xl font-black tracking-tight">Our Story</h2>
                 </div>
                 
-                <div className="space-y-6 text-white/70 leading-relaxed text-lg md:text-xl font-medium max-w-3xl">
+                <div className="space-y-6 text-foreground/90 leading-relaxed text-lg md:text-xl font-medium max-w-3xl">
                   <p>
                     NrityaVaani started as an idea during our early college journey, where we explored how technology can solve real-world cultural challenges. We noticed that learning and understanding classical dance mudras is difficult without expert guidance, and there was no accessible smart system to assist learners.
                   </p>
                   <p>
                     With this problem in mind, we began building a solution from scratch—starting with research, dataset collection, and understanding how AI/ML models can interpret human gestures.
                   </p>
-                  <p className="text-white">
+                  <p className="text-foreground">
                     What began as a concept soon turned into a working prototype through continuous experimentation, failures, and learning.
                   </p>
                 </div>
@@ -102,7 +102,7 @@ export default function AboutPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="glass-card p-10 md:p-14 relative overflow-hidden border-accent-gold/30 bg-gradient-to-br from-accent-gold/10 via-black to-black shadow-[0_0_50px_rgba(255,215,0,0.15)] group">
+            <div className="glass-card p-10 md:p-14 relative overflow-hidden border-accent-gold/30 bg-gradient-to-br from-accent-gold/10 via-background to-background shadow-[0_0_50px_rgba(255,215,0,0.15)] group">
               <div className="absolute -right-10 -bottom-10 opacity-10 group-hover:scale-110 transition-transform duration-700">
                 <Trophy className="w-80 h-80 text-accent-gold" />
               </div>
@@ -117,7 +117,7 @@ export default function AboutPage() {
                   </h2>
                 </div>
                 
-                <p className="text-xl md:text-2xl text-white/80 leading-relaxed font-medium">
+                <p className="text-xl md:text-2xl text-foreground/90 leading-relaxed font-medium">
                   We proudly secured <strong className="text-accent-gold">3rd Prize</strong> in our first hackathon, which validated our idea and boosted our confidence to take NrityaVaani further. We also secured <strong className="text-accent-gold">3rd position</strong> at the Inter-College Dron Tech Fest 2026 (Innovative Startup Pitch). These achievements reflect our dedication, innovation, and ability to turn ideas into reality.
                 </p>
               </div>
@@ -129,18 +129,18 @@ export default function AboutPage() {
         <section>
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-4">Our <span className="text-primary">Approach</span></h2>
-            <p className="text-white/40 text-lg">The engineering lifecycle behind NrityaVaani.</p>
+            <p className="text-foreground/90 text-lg">The engineering lifecycle behind NrityaVaani.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {approaches.map((step, i) => (
               <TiltCard key={step.title} className="h-full">
                 <div className="glass-card p-6 h-full flex flex-col items-center text-center group hover:border-primary/50 transition-colors duration-300">
-                   <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary/20 group-hover:shadow-[0_0_20px_rgba(255,153,51,0.3)] transition-all text-white/50 group-hover:text-primary">
+                   <div className="w-14 h-14 bg-foreground/5 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary/20 group-hover:shadow-[0_0_20px_rgba(255,153,51,0.3)] transition-all text-foreground/90 group-hover:text-primary">
                       {step.icon}
                    </div>
                    <h4 className="font-black text-lg mb-3 tracking-tight">{step.title}</h4>
-                   <p className="text-sm text-white/50 leading-relaxed font-medium">{step.desc}</p>
+                   <p className="text-sm text-foreground/90 leading-relaxed font-medium">{step.desc}</p>
                 </div>
               </TiltCard>
             ))}
@@ -150,12 +150,12 @@ export default function AboutPage() {
         {/* TEAM */}
         <section className="relative">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 text-[10px] font-bold tracking-[0.2em] uppercase mb-6">
+            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-foreground/5 border border-foreground/10 text-foreground/90 text-[10px] font-bold tracking-[0.2em] uppercase mb-6">
               <Code className="w-3 h-3" />
               <span>Meet The Creators</span>
             </div>
             <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4">Team <span className="text-accent-cyan">DivyCoders</span></h2>
-            <p className="text-white/40 text-lg max-w-2xl mx-auto">
+            <p className="text-foreground/90 text-lg max-w-2xl mx-auto">
               We are a passionate team of developers and learners. As a team, this was our first hackathon experience, where we explored real-world problem solving, teamwork, and AI model development.
             </p>
           </div>
@@ -185,7 +185,7 @@ export default function AboutPage() {
         {/* GOALS & INNOVATION GRID */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <TiltCard>
-            <div className="glass-card p-10 h-full border-white/5 relative overflow-hidden group">
+            <div className="glass-card p-10 h-full border-foreground/5 relative overflow-hidden group">
               <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:scale-125 transition-transform duration-700">
                 <Target className="w-40 h-40" />
               </div>
@@ -199,7 +199,7 @@ export default function AboutPage() {
                     <div className="w-6 h-6 rounded-full bg-accent-pink/20 flex items-center justify-center shrink-0 mt-0.5">
                       <div className="w-2 h-2 rounded-full bg-accent-pink" />
                     </div>
-                    <span className="text-white/70 font-medium text-lg leading-relaxed">{goal}</span>
+                    <span className="text-foreground/90 font-medium text-lg leading-relaxed">{goal}</span>
                   </li>
                 ))}
               </ul>
@@ -207,7 +207,7 @@ export default function AboutPage() {
           </TiltCard>
           
           <TiltCard>
-            <div className="glass-card p-10 h-full border-white/5 relative overflow-hidden group">
+            <div className="glass-card p-10 h-full border-foreground/5 relative overflow-hidden group">
               <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:scale-125 transition-transform duration-700">
                 <Zap className="w-40 h-40" />
               </div>
@@ -221,7 +221,7 @@ export default function AboutPage() {
                     <div className="w-6 h-6 rounded-full bg-accent-cyan/20 flex items-center justify-center shrink-0 mt-0.5">
                       <div className="w-2 h-2 rounded-full bg-accent-cyan" />
                     </div>
-                    <span className="text-white/70 font-medium text-lg leading-relaxed">{inn}</span>
+                    <span className="text-foreground/90 font-medium text-lg leading-relaxed">{inn}</span>
                   </li>
                 ))}
               </ul>
@@ -240,7 +240,7 @@ export default function AboutPage() {
           >
             <div className="relative">
               <Quote className="w-20 h-20 text-primary/20 absolute -top-10 -left-10 rotate-180" />
-              <h2 className="text-3xl md:text-5xl font-black leading-tight tracking-tighter relative z-10 text-white">
+              <h2 className="text-3xl md:text-5xl font-black leading-tight tracking-tighter relative z-10 text-foreground">
                 "To create a bridge between tradition and technology, making Indian classical dance more accessible, interactive, and globally recognized through innovation."
               </h2>
               <Quote className="w-20 h-20 text-primary/20 absolute -bottom-10 -right-10" />
@@ -260,17 +260,17 @@ export default function AboutPage() {
 function TeamMember({ name, role, img, linkedinUrl }: { name: string, role: string, img: string, linkedinUrl: string }) {
   return (
     <TiltCard>
-      <div className="glass-card p-8 border-white/5 flex flex-col items-center text-center group hover:border-accent-cyan/30 transition-colors duration-500">
-        <div className="w-32 h-32 rounded-full overflow-hidden mb-6 ring-4 ring-white/5 ring-offset-8 ring-offset-black group-hover:ring-accent-cyan/50 transition-all duration-500 shadow-xl relative">
+      <div className="glass-card p-8 border-foreground/5 flex flex-col items-center text-center group hover:border-accent-cyan/30 transition-colors duration-500">
+        <div className="w-32 h-32 rounded-full overflow-hidden mb-6 ring-4 ring-foreground/5 ring-offset-8 ring-offset-background group-hover:ring-accent-cyan/50 transition-all duration-500 shadow-xl relative">
           <div className="absolute inset-0 bg-accent-cyan/20 opacity-0 group-hover:opacity-100 mix-blend-overlay transition-opacity duration-500 z-10" />
           <img src={img} alt={name} className="w-full h-full object-cover grayscale-0 md:grayscale md:group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" />
         </div>
         <h4 className="text-2xl font-black mb-2">{name}</h4>
-        <div className="inline-block px-3 py-1 rounded-full bg-white/5 mb-6">
+        <div className="inline-block px-3 py-1 rounded-full bg-foreground/5 mb-6">
           <p className="text-xs text-accent-cyan uppercase font-bold tracking-widest">{role}</p>
         </div>
         <div className="flex items-center justify-center space-x-4 opacity-50 group-hover:opacity-100 transition-opacity">
-          <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#0077b5] hover:text-white transition-colors">
+          <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-foreground/5 flex items-center justify-center hover:bg-[#0077b5] hover:text-foreground transition-colors">
             <Linkedin className="w-5 h-5" />
           </a>
         </div>

@@ -30,18 +30,18 @@ export default function PredictionPanel({ detectedMudras, landmarks }: Predictio
       {/* Current Result Card */}
       <div className={cn(
         "glass-card p-6 relative overflow-hidden transition-colors duration-500",
-        isStale ? "border-white/10 opacity-70" : "border-primary/20",
-        displayMudras.length === 0 ? "border-white/5 opacity-50" : ""
+        isStale ? "border-foreground/10 opacity-70" : "border-primary/20",
+        displayMudras.length === 0 ? "border-foreground/5 opacity-50" : ""
       )}>
         <div className="absolute top-0 right-0 p-4 opacity-10">
           <Zap className="w-16 h-16 text-primary" />
         </div>
         
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-white/40 text-[10px] uppercase tracking-widest font-bold flex items-center space-x-2">
+          <h3 className="text-foreground/40 text-[10px] uppercase tracking-widest font-bold flex items-center space-x-2">
             <span className={cn(
               "w-1.5 h-1.5 rounded-full animate-pulse",
-              isStale ? "bg-white/20" : "bg-primary"
+              isStale ? "bg-foreground/20" : "bg-primary"
             )} />
             <span>{isStale ? 'Captured Result' : 'Live Detection'}</span>
           </h3>
@@ -64,45 +64,45 @@ export default function PredictionPanel({ detectedMudras, landmarks }: Predictio
                 </p>
                 <h2 className={cn(
                   "text-3xl font-black mb-2 transition-all",
-                  isStale ? "text-white/40" : "text-white"
+                  isStale ? "text-foreground/40" : "text-foreground"
                 )}>
                   {displayMudra.name}
                 </h2>
                 <div className="flex items-center space-x-2">
-                  <div className="flex-1 h-1.5 bg-white/5 rounded-full overflow-hidden">
+                  <div className="flex-1 h-1.5 bg-foreground/5 rounded-full overflow-hidden">
                     <motion.div 
-                      className={cn("h-full", isStale ? "bg-white/20" : "bg-primary")}
+                      className={cn("h-full", isStale ? "bg-foreground/20" : "bg-primary")}
                       initial={{ width: 0 }}
                       animate={{ width: `${displayMudra.confidence * 100}%` }}
                     />
                   </div>
-                  <span className={cn("font-mono text-sm", isStale ? "text-white/20" : "text-primary")}>
+                  <span className={cn("font-mono text-sm", isStale ? "text-foreground/20" : "text-primary")}>
                     {`${(displayMudra.confidence * 100).toFixed(1)}%`}
                   </span>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-3 p-3 bg-white/5 rounded-xl border border-white/5">
-                <ShieldCheck className={cn("w-5 h-5 mt-0.5", isStale ? "text-white/20" : "text-green-400")} />
+              <div className="flex items-start space-x-3 p-3 bg-foreground/5 rounded-xl border border-foreground/5">
+                <ShieldCheck className={cn("w-5 h-5 mt-0.5", isStale ? "text-foreground/20" : "text-green-400")} />
                 <div>
-                  <p className={cn("text-[10px] font-bold uppercase mb-1", isStale ? "text-white/20" : "text-green-400")}>
+                  <p className={cn("text-[10px] font-bold uppercase mb-1", isStale ? "text-foreground/20" : "text-green-400")}>
                     Feedback
                   </p>
-                  <p className={cn("text-sm leading-relaxed", isStale ? "text-white/30" : "text-white/70")}>
+                  <p className={cn("text-sm leading-relaxed", isStale ? "text-foreground/30" : "text-foreground/70")}>
                     {displayMudra.feedback}
                   </p>
                 </div>
               </div>
-              {index < displayMudras.length - 1 && <div className="my-6 border-t border-white/10" />}
+              {index < displayMudras.length - 1 && <div className="my-6 border-t border-foreground/10" />}
             </div>
           )) : (
             <div className="space-y-4">
-              <h2 className="text-3xl font-black mb-2 text-white/40">Searching...</h2>
-              <div className="flex items-start space-x-3 p-3 bg-white/5 rounded-xl border border-white/5 opacity-50">
-                <AlertCircle className="w-5 h-5 text-white/40 mt-0.5" />
+              <h2 className="text-3xl font-black mb-2 text-foreground/40">Searching...</h2>
+              <div className="flex items-start space-x-3 p-3 bg-foreground/5 rounded-xl border border-foreground/5 opacity-50">
+                <AlertCircle className="w-5 h-5 text-foreground/40 mt-0.5" />
                 <div>
-                  <p className="text-[10px] font-bold uppercase mb-1 text-white/40">Waiting for data</p>
-                  <p className="text-sm text-white/30">Adjust your hands within the frame for analysis.</p>
+                  <p className="text-[10px] font-bold uppercase mb-1 text-foreground/40">Waiting for data</p>
+                  <p className="text-sm text-foreground/30">Adjust your hands within the frame for analysis.</p>
                 </div>
               </div>
             </div>
@@ -122,10 +122,10 @@ export default function PredictionPanel({ detectedMudras, landmarks }: Predictio
           {predictions.length > 0 ? predictions.map((p, i) => (
             <div key={`${p.name}-${p.handedness || ''}-${i}`} className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="font-medium text-white/80">{p.handedness ? `${p.handedness}: ` : ''}{p.name}</span>
-                <span className="text-white/40">{Math.round(p.confidence * 100)}%</span>
+                <span className="font-medium text-foreground/80">{p.handedness ? `${p.handedness}: ` : ''}{p.name}</span>
+                <span className="text-foreground/40">{Math.round(p.confidence * 100)}%</span>
               </div>
-              <div className="h-1 bg-white/5 rounded-full overflow-hidden">
+              <div className="h-1 bg-foreground/5 rounded-full overflow-hidden">
                 <motion.div 
                   className={`h-full ${i === 0 ? 'bg-primary' : i === 1 ? 'bg-accent-violet' : 'bg-accent-pink'}`}
                   initial={{ width: 0 }}
@@ -138,10 +138,10 @@ export default function PredictionPanel({ detectedMudras, landmarks }: Predictio
               {[1, 2, 3].map(i => (
                 <div key={i} className="animate-pulse space-y-2">
                   <div className="flex justify-between">
-                    <div className="w-24 h-4 bg-white/5 rounded" />
-                    <div className="w-8 h-4 bg-white/5 rounded" />
+                    <div className="w-24 h-4 bg-foreground/5 rounded" />
+                    <div className="w-8 h-4 bg-foreground/5 rounded" />
                   </div>
-                  <div className="h-1 bg-white/5 rounded-full" />
+                  <div className="h-1 bg-foreground/5 rounded-full" />
                 </div>
               ))}
             </div>

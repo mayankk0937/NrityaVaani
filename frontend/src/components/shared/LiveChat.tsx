@@ -22,7 +22,7 @@ const FAQ_OPTIONS = [
   { label: "Can I upload a photo?", response: (
       <div className="space-y-3">
         <p>Yes! You can upload custom images from your gallery to get deep mudra analytics.</p>
-        <Link href="/upload" className="block w-full bg-white/10 border border-white/20 py-2 rounded-lg text-center font-bold hover:bg-white/20 transition-colors">Go to Upload Feature</Link>
+        <Link href="/upload" className="block w-full bg-foreground/10 border border-foreground/20 py-2 rounded-lg text-center font-bold hover:bg-foreground/20 transition-colors">Go to Upload Feature</Link>
       </div>
     ) 
   },
@@ -68,28 +68,28 @@ export default function LiveChat() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="absolute bottom-[70px] right-0 w-[calc(100vw-2rem)] sm:w-[350px] shadow-[0_0_50px_rgba(255,153,51,0.15)] rounded-2xl overflow-hidden glass-card border border-white/10 flex flex-col bg-black/80 backdrop-blur-3xl"
+            className="absolute bottom-[70px] right-0 w-[calc(100vw-2rem)] sm:w-[350px] shadow-[0_0_50px_rgba(255,153,51,0.15)] rounded-2xl overflow-hidden glass-card border border-foreground/10 flex flex-col bg-background/80 backdrop-blur-3xl"
           >
             {/* Header */}
-            <div className="bg-primary/10 p-4 border-b border-white/5 flex items-center justify-between relative overflow-hidden">
+            <div className="bg-primary/10 p-4 border-b border-foreground/5 flex items-center justify-between relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent opacity-50" />
               <div className="flex items-center space-x-3 relative z-10">
                 <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30 shadow-[0_0_15px_rgba(255,153,51,0.4)]">
                    <Bot className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white text-sm">DivyBot (AI Support)</h3>
+                  <h3 className="font-bold text-foreground text-sm">DivyBot (AI Support)</h3>
                   <div className="flex items-center space-x-2">
                     <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                    <span className="text-xs text-white/50">Typically replies instantly</span>
+                    <span className="text-xs text-foreground/50">Typically replies instantly</span>
                   </div>
                 </div>
               </div>
               <button 
                 onClick={() => setIsOpen(false)}
-                className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors relative z-10"
+                className="w-8 h-8 rounded-full bg-foreground/5 flex items-center justify-center hover:bg-foreground/10 transition-colors relative z-10"
               >
-                <X className="w-4 h-4 text-white/70" />
+                <X className="w-4 h-4 text-foreground/70" />
               </button>
             </div>
 
@@ -99,7 +99,7 @@ export default function LiveChat() {
               className="h-[250px] p-4 overflow-y-auto flex flex-col space-y-4 custom-scrollbar"
             >
               <div className="text-center mb-2">
-                <span className="text-[10px] text-white/30 uppercase font-bold tracking-widest bg-white/5 px-3 py-1 rounded-full">Today</span>
+                <span className="text-[10px] text-foreground/30 uppercase font-bold tracking-widest bg-foreground/5 px-3 py-1 rounded-full">Today</span>
               </div>
               
               {messages.map((msg) => (
@@ -110,14 +110,14 @@ export default function LiveChat() {
                   className={`flex items-end space-x-2 max-w-[85%] ${msg.sender === 'user' ? 'self-end flex-row-reverse space-x-reverse' : 'self-start'}`}
                 >
                    {msg.sender === 'bot' && (
-                     <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center shrink-0 mb-1">
-                       <Bot className="w-3 h-3 text-white/60" />
+                     <div className="w-6 h-6 rounded-full bg-foreground/10 flex items-center justify-center shrink-0 mb-1">
+                       <Bot className="w-3 h-3 text-foreground/60" />
                      </div>
                    )}
                    <div className={`p-3 rounded-2xl text-sm leading-relaxed ${
                      msg.sender === 'user' 
                       ? 'bg-primary text-black rounded-br-sm shadow-[0_0_15px_rgba(255,153,51,0.3)] font-medium' 
-                      : 'bg-white/10 text-white/80 rounded-bl-sm border border-white/5'
+                      : 'bg-foreground/10 text-foreground/80 rounded-bl-sm border border-foreground/5'
                    }`}>
                       {msg.text}
                    </div>
@@ -129,28 +129,28 @@ export default function LiveChat() {
                   initial={{ opacity: 0 }} animate={{ opacity: 1 }}
                   className="flex items-center space-x-2 self-start"
                 >
-                  <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center shrink-0">
-                    <Bot className="w-3 h-3 text-white/60" />
+                  <div className="w-6 h-6 rounded-full bg-foreground/10 flex items-center justify-center shrink-0">
+                    <Bot className="w-3 h-3 text-foreground/60" />
                   </div>
-                  <div className="bg-white/5 p-3 rounded-2xl rounded-bl-sm border border-white/5 flex items-center space-x-1">
-                    <span className="w-1.5 h-1.5 bg-white/40 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <span className="w-1.5 h-1.5 bg-white/40 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <span className="w-1.5 h-1.5 bg-white/40 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  <div className="bg-foreground/5 p-3 rounded-2xl rounded-bl-sm border border-foreground/5 flex items-center space-x-1">
+                    <span className="w-1.5 h-1.5 bg-foreground/40 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <span className="w-1.5 h-1.5 bg-foreground/40 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <span className="w-1.5 h-1.5 bg-foreground/40 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                   </div>
                 </motion.div>
               )}
             </div>
 
             {/* Input / FAQ Area */}
-            <div className="p-4 bg-white/5 border-t border-white/5">
-              <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest mb-3 px-1">Suggested Questions</p>
+            <div className="p-4 bg-foreground/5 border-t border-foreground/5">
+              <p className="text-[10px] text-foreground/40 font-bold uppercase tracking-widest mb-3 px-1">Suggested Questions</p>
               <div className="flex flex-wrap gap-2 mb-2">
                 {FAQ_OPTIONS.map((faq, i) => (
                   <button
                     key={i}
                     onClick={() => handleFAQClick(faq)}
                     disabled={isTyping}
-                    className="text-xs bg-white/5 hover:bg-primary/20 hover:text-primary transition-colors border border-white/10 rounded-full py-1.5 px-3 text-white/70 text-left disabled:opacity-50"
+                    className="text-xs bg-foreground/5 hover:bg-primary/20 hover:text-primary transition-colors border border-foreground/10 rounded-full py-1.5 px-3 text-foreground/70 text-left disabled:opacity-50"
                   >
                     {faq.label}
                   </button>
@@ -160,7 +160,7 @@ export default function LiveChat() {
                 <input 
                    disabled
                    placeholder="AI processing FAQs currently..."
-                   className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-base outline-none text-white/50 opacity-50 cursor-not-allowed"
+                   className="flex-1 bg-foreground/5 border border-foreground/10 rounded-xl px-4 py-2.5 text-base outline-none text-foreground/50 opacity-50 cursor-not-allowed"
                 />
                 <button disabled className="w-10 h-10 rounded-xl bg-primary/20 text-primary flex items-center justify-center opacity-50 cursor-not-allowed">
                   <Send className="w-4 h-4 ml-1" />

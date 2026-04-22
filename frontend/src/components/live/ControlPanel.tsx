@@ -22,7 +22,7 @@ export default function ControlPanel({
   onToggleSkeleton
 }: ControlPanelProps) {
   return (
-    <div className="glass-card p-4 flex items-center justify-between border-white/10 shadow-xl">
+    <div className="glass-card p-4 flex items-center justify-between border-foreground/10 shadow-xl">
       <div className="flex items-center space-x-2">
         <button
           onClick={onToggleCamera}
@@ -35,7 +35,7 @@ export default function ControlPanel({
           <span>{isActive ? 'Stop Camera' : 'Start Camera'}</span>
         </button>
         
-        <div className="h-8 w-[1px] bg-white/10 mx-2" />
+        <div className="h-8 w-[1px] bg-foreground/10 mx-2" />
         
         <div className="flex items-center space-x-1">
           <ControlButton 
@@ -54,10 +54,10 @@ export default function ControlPanel({
       </div>
 
       <div className="flex items-center space-x-3">
-        <button className="p-2 text-white/40 hover:text-white hover:bg-white/5 rounded-lg transition-all" title="Capture Frame">
+        <button className="p-2 text-foreground/40 hover:text-foreground hover:bg-foreground/5 rounded-lg transition-all" title="Capture Frame">
           <Save className="w-5 h-5" />
         </button>
-        <button className="p-2 text-white/40 hover:text-white hover:bg-white/5 rounded-lg transition-all" title="Record Session">
+        <button className="p-2 text-foreground/40 hover:text-foreground hover:bg-foreground/5 rounded-lg transition-all" title="Record Session">
           <Video className="w-5 h-5" />
         </button>
       </div>
@@ -71,7 +71,7 @@ function ControlButton({ active, onClick, icon, label }: { active: boolean, onCl
       onClick={onClick}
       className={cn(
         "flex items-center space-x-2 px-3 py-2 rounded-lg text-xs font-bold transition-all",
-        active ? "bg-white/10 text-white" : "text-white/40 hover:bg-white/5"
+        active ? "bg-foreground/10 text-foreground" : "text-foreground/40 hover:bg-foreground/5"
       )}
     >
       {icon}

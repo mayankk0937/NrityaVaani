@@ -39,9 +39,12 @@ const CameraFeed = ({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const handLandmarkerRef = useRef<HandLandmarker | null>(null);
   const animationFrameRef = useRef<number | null>(null);
+  const streamRef = useRef<MediaStream | null>(null);
+  const isMountedRef = useRef<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    isMountedRef.current = true;
     const initDetector = async () => {
       try {
         const vision = await FilesetResolver.forVisionTasks(
@@ -65,6 +68,7 @@ const CameraFeed = ({
     initDetector();
 
     return () => {
+      isMountedRef.current = false;
       if (handLandmarkerRef.current) {
         handLandmarkerRef.current.close();
       }
@@ -81,11 +85,33 @@ const CameraFeed = ({
     return () => stopCamera();
   }, [isActive]);
 
+  // Clean up on tab visibility change as well
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        stopCamera();
+      } else if (isActive && isMountedRef.current) {
+        startCamera();
+      }
+    };
+    
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, [isActive]);
+
   const startCamera = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ 
         video: { width: 1280, height: 720, facingMode: "user" } 
       });
+      
+      // If component unmounted while waiting for permissions
+      if (!isMountedRef.current) {
+        stream.getTracks().forEach(track => track.stop());
+        return;
+      }
+
+      streamRef.current = stream;
       
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
@@ -96,7 +122,9 @@ const CameraFeed = ({
       }
     } catch (err) {
       console.error("Error accessing webcam:", err);
-      setError("Webcam access denied. Please enable camera permissions.");
+      if (isMountedRef.current) {
+        setError("Webcam access denied. Please enable camera permissions.");
+      }
     }
   };
 
@@ -104,9 +132,11 @@ const CameraFeed = ({
     if (animationFrameRef.current) {
       cancelAnimationFrame(animationFrameRef.current);
     }
-    if (videoRef.current && videoRef.current.srcObject) {
-      const stream = videoRef.current.srcObject as MediaStream;
-      stream.getTracks().forEach(track => track.stop());
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach(track => track.stop());
+      streamRef.current = null;
+    }
+    if (videoRef.current) {
       videoRef.current.srcObject = null;
     }
   };
@@ -234,7 +264,7 @@ const CameraFeed = ({
         style={{ display: isActive ? 'block' : 'none' }}
       />
       {error && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/80 px-6 text-center z-10">
+        <div className="absolute inset-0 flex items-center justify-center bg-background/80 px-6 text-center z-10">
           <p className="text-red-400 text-sm font-medium">{error}</p>
         </div>
       )}

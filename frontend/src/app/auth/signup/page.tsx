@@ -21,38 +21,38 @@ export default function SignupPage() {
             <span className="text-black font-bold text-xl">N</span>
           </div>
           <h1 className="text-3xl font-black mb-2">Join NrityaVaani</h1>
-          <p className="text-white/40 text-sm">Create your account and start perfecting your mudras.</p>
+          <p className="text-foreground/40 text-sm">Create your account and start perfecting your mudras.</p>
         </div>
 
         <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
           <div className="space-y-4">
             <div className="relative">
-              <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
+              <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/30" />
               <input 
                 type="text" 
                 placeholder="Full name"
-                className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-sm focus:outline-none focus:border-primary/50 transition-colors"
+                className="w-full bg-foreground/5 border border-foreground/10 rounded-xl py-3 pl-12 pr-4 text-sm focus:outline-none focus:border-primary/50 transition-colors"
               />
             </div>
             <div className="relative">
-              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
+              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/30" />
               <input 
                 type="email" 
                 placeholder="Email address"
-                className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-sm focus:outline-none focus:border-primary/50 transition-colors"
+                className="w-full bg-foreground/5 border border-foreground/10 rounded-xl py-3 pl-12 pr-4 text-sm focus:outline-none focus:border-primary/50 transition-colors"
               />
             </div>
             <div className="relative">
-              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
+              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/30" />
               <input 
                 type="password" 
                 placeholder="Create password"
-                className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-sm focus:outline-none focus:border-primary/50 transition-colors"
+                className="w-full bg-foreground/5 border border-foreground/10 rounded-xl py-3 pl-12 pr-4 text-sm focus:outline-none focus:border-primary/50 transition-colors"
               />
             </div>
           </div>
 
-          <div className="text-[10px] text-white/30 text-center px-4 leading-relaxed">
+          <div className="text-[10px] text-foreground/30 text-center px-4 leading-relaxed">
             By signing up, you agree to our <span className="text-primary cursor-pointer">Terms of Service</span> and <span className="text-primary cursor-pointer">Privacy Policy</span>.
           </div>
 
@@ -63,17 +63,17 @@ export default function SignupPage() {
         </form>
 
         <div className="my-8 flex items-center space-x-4">
-          <div className="flex-1 h-[1px] bg-white/10" />
-          <span className="text-[10px] text-white/30 uppercase font-bold tracking-widest">Or sign up with</span>
-          <div className="flex-1 h-[1px] bg-white/10" />
+          <div className="flex-1 h-[1px] bg-foreground/10" />
+          <span className="text-[10px] text-foreground/30 uppercase font-bold tracking-widest">Or sign up with</span>
+          <div className="flex-1 h-[1px] bg-foreground/10" />
         </div>
 
         <div className="grid grid-cols-2 gap-4">
-          <button className="flex items-center justify-center space-x-2 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-sm font-medium">
+          <button className="flex items-center justify-center space-x-2 py-2.5 rounded-xl bg-foreground/5 border border-foreground/10 hover:bg-foreground/10 transition-colors text-sm font-medium">
             <Github className="w-4 h-4" />
             <span>GitHub</span>
           </button>
-          <button className="flex items-center justify-center space-x-2 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-sm font-medium">
+          <button className="flex items-center justify-center space-x-2 py-2.5 rounded-xl bg-foreground/5 border border-foreground/10 hover:bg-foreground/10 transition-colors text-sm font-medium">
             <svg className="w-4 h-4" viewBox="0 0 24 24">
               <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
               <path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
@@ -84,7 +84,7 @@ export default function SignupPage() {
           </button>
         </div>
 
-        <p className="mt-10 text-center text-sm text-white/40">
+        <p className="mt-10 text-center text-sm text-foreground/40">
           Already have an account? <Link href="/auth/login" className="text-primary hover:underline font-bold">Sign in</Link>
         </p>
       </motion.div>

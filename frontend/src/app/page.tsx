@@ -41,7 +41,7 @@ export default function LandingPage() {
               Expertise for <span className="text-accent-gold italic serif">Bharatanatyam</span>
             </h1>
             
-            <p className="text-white/50 text-xl md:text-2xl max-w-3xl mx-auto mb-16 leading-relaxed font-medium">
+            <p className="text-foreground/50 text-xl md:text-2xl max-w-3xl mx-auto mb-16 leading-relaxed font-medium">
               Elevate your practice with the world&apos;s most advanced AI gesture recognition platform.
               Precision at 60FPS, designed for the future of classical dance.
             </p>
@@ -65,8 +65,8 @@ export default function LandingPage() {
             className="mt-32 relative perspective-1000 group"
           >
             <TiltCard className="max-w-5xl mx-auto">
-              <div className="glass-card p-1 sm:p-2 bg-gradient-to-br from-white/10 to-transparent border-white/20 shadow-[0_50px_100px_-20px_rgba(255,153,51,0.2)]">
-                <div className="aspect-video relative rounded-2xl overflow-hidden bg-black/60 border border-white/5">
+              <div className="glass-card p-1 sm:p-2 bg-gradient-to-br from-foreground/10 to-transparent border-foreground/20 shadow-[0_50px_100px_-20px_rgba(255,153,51,0.2)]">
+                <div className="aspect-video relative rounded-2xl overflow-hidden bg-background/60 border border-foreground/5">
                   <video 
                     autoPlay 
                     loop 
@@ -145,11 +145,11 @@ export default function LandingPage() {
                 transition={{ delay: i * 0.1 }}
                 className="text-center group"
               >
-                <div className="inline-flex items-center space-x-2 text-white/30 mb-4 group-hover:text-primary transition-colors">
+                <div className="inline-flex items-center space-x-2 text-foreground/30 mb-4 group-hover:text-primary transition-colors">
                   {stat.icon}
                   <span className="text-[10px] font-black uppercase tracking-widest">{stat.label}</span>
                 </div>
-                <h3 className="text-4xl sm:text-5xl font-black text-white">{stat.value}</h3>
+                <h3 className="text-4xl sm:text-5xl font-black text-foreground">{stat.value}</h3>
               </motion.div>
             ))}
           </div>
@@ -187,7 +187,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-24">
             <h2 className="text-4xl sm:text-5xl md:text-7xl font-black mb-6 tracking-tighter break-words">Choose Your <span className="text-primary">Path</span></h2>
-            <p className="text-white/40 text-xl max-w-2xl mx-auto">Professional plans designed for every stage of your dance journey.</p>
+            <p className="text-foreground/40 text-xl max-w-2xl mx-auto">Professional plans designed for every stage of your dance journey.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
@@ -233,7 +233,7 @@ export default function LandingPage() {
             <h2 className="text-4xl sm:text-5xl md:text-7xl font-black mb-10 relative z-10 tracking-tighter leading-none break-words">
               Perfect Your <br /> Art with <span className="text-primary italic">NrityaVaani</span>
             </h2>
-            <p className="text-white/40 text-xl mb-12 max-w-2xl mx-auto relative z-10 leading-relaxed font-medium">
+            <p className="text-foreground/40 text-xl mb-12 max-w-2xl mx-auto relative z-10 leading-relaxed font-medium">
               Join the elite circle of dancers and gurus leveraging the power of Artificial Intelligence to preserve and perfect classical heritage.
             </p>
             <Link href="/auth/signup" className="premium-button relative z-10 inline-flex items-center space-x-3 text-lg py-5 px-12">
@@ -250,12 +250,12 @@ export default function LandingPage() {
 function FeatureCard({ icon, title, description, href }: { icon: React.ReactNode, title: string, description: string, href: string }) {
   return (
     <TiltCard>
-      <div className="glass-card p-10 h-full border-white/5 group hover:border-primary/20 transition-all">
-        <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-8 border border-white/10 group-hover:scale-110 group-hover:bg-primary/10 group-hover:border-primary/20 transition-all duration-500">
+      <div className="glass-card p-10 h-full border-foreground/5 group hover:border-primary/20 transition-all">
+        <div className="w-16 h-16 rounded-2xl bg-foreground/5 flex items-center justify-center mb-8 border border-foreground/10 group-hover:scale-110 group-hover:bg-primary/10 group-hover:border-primary/20 transition-all duration-500">
           {icon}
         </div>
         <h3 className="text-2xl font-black mb-6 tracking-tight">{title}</h3>
-        <p className="text-white/40 text-base leading-relaxed font-medium">{description}</p>
+        <p className="text-foreground/40 text-base leading-relaxed font-medium">{description}</p>
         
         <Link href={href} className="mt-10 flex items-center text-[10px] font-black text-primary uppercase tracking-[0.2em] group-hover:translate-x-2 transition-transform cursor-pointer">
           <span>Read Research</span>
@@ -268,7 +268,7 @@ function FeatureCard({ icon, title, description, href }: { icon: React.ReactNode
 function PriceCard({ name, price, description, features, icon, buttonText, popular, planId }: any) {
   return (
     <TiltCard className={popular ? "md:scale-110 z-20" : "z-10"}>
-      <div className={`glass-card p-10 flex flex-col h-full border-white/5 relative overflow-hidden ${popular ? 'ring-2 ring-primary/50 shadow-[0_0_50px_rgba(255,153,51,0.2)]' : ''}`}>
+      <div className={`glass-card p-10 flex flex-col h-full border-foreground/5 relative overflow-hidden ${popular ? 'ring-2 ring-primary/50 shadow-[0_0_50px_rgba(255,153,51,0.2)]' : ''}`}>
         {popular && (
           <div className="absolute top-0 right-0 bg-primary text-black font-black text-[10px] uppercase tracking-widest px-6 py-2 rounded-bl-2xl">
             Most Popular
@@ -276,19 +276,19 @@ function PriceCard({ name, price, description, features, icon, buttonText, popul
         )}
         
         <div className="flex items-center space-x-3 mb-8">
-          <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${popular ? 'bg-primary/20' : 'bg-white/5'}`}>
+          <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${popular ? 'bg-primary/20' : 'bg-foreground/5'}`}>
             {icon}
           </div>
-          <span className="text-lg font-black uppercase tracking-widest text-white/50">{name}</span>
+          <span className="text-lg font-black uppercase tracking-widest text-foreground/50">{name}</span>
         </div>
 
         <div className="mb-8">
           <div className="flex items-baseline space-x-1">
             <span className="text-5xl font-black">₹</span>
             <span className="text-5xl sm:text-7xl font-black tracking-tighter">{price}</span>
-            <span className="text-white/30 font-bold">/mo</span>
+            <span className="text-foreground/30 font-bold">/mo</span>
           </div>
-          <p className="mt-4 text-white/40 text-sm leading-relaxed">{description}</p>
+          <p className="mt-4 text-foreground/40 text-sm leading-relaxed">{description}</p>
         </div>
 
         <div className="flex-1 space-y-4 mb-10">
@@ -297,7 +297,7 @@ function PriceCard({ name, price, description, features, icon, buttonText, popul
               <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center">
                 <Check className="w-3 h-3 text-green-400" />
               </div>
-              <span className="text-sm text-white/60 font-medium">{feature}</span>
+              <span className="text-sm text-foreground/60 font-medium">{feature}</span>
             </div>
           ))}
         </div>

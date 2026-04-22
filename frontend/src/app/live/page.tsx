@@ -159,7 +159,7 @@ export default function LiveDetectionPage() {
   }, [timeline]);
 
   return (
-    <div className="pt-24 min-h-screen bg-black px-6 pb-12">
+    <div className="pt-24 min-h-screen bg-background px-6 pb-12">
       <div className="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-x-8 gap-y-6 items-start">
         
         {/* Mobile Quick Actions */}
@@ -170,14 +170,14 @@ export default function LiveDetectionPage() {
              </div>
              <div>
                 <h2 className="text-lg font-bold">Live AI Practice</h2>
-                <p className="text-[10px] text-white/40 uppercase font-black tracking-widest">Real-time Landmark Tracking</p>
+                <p className="text-[10px] text-foreground/40 uppercase font-black tracking-widest">Real-time Landmark Tracking</p>
              </div>
           </div>
           <motion.a 
             href="/upload"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center space-x-2 px-4 py-2 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors group"
+            className="flex items-center space-x-2 px-4 py-2 bg-foreground/5 border border-foreground/10 rounded-xl hover:bg-foreground/10 transition-colors group"
           >
             <Camera className="w-4 h-4 text-primary group-hover:animate-pulse" />
             <span className="text-xs font-bold">Upload Photo</span>
@@ -186,7 +186,7 @@ export default function LiveDetectionPage() {
 
         {/* Camera View */}
         <div className="lg:col-span-8 lg:col-start-1">
-          <div className="relative aspect-video glass-card overflow-hidden bg-black/40 border-white/5 shadow-2xl">
+          <div className="relative aspect-video glass-card overflow-hidden bg-background/40 border-foreground/5 shadow-2xl">
             <CameraFeed 
               isActive={isCameraActive} 
               onUpdate={handleUpdate}
@@ -199,7 +199,7 @@ export default function LiveDetectionPage() {
                 <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center animate-pulse">
                   <Camera className="w-10 h-10 text-primary" />
                 </div>
-                <p className="text-white/40 font-medium">Camera is inactive</p>
+                <p className="text-foreground/40 font-medium">Camera is inactive</p>
                 <button 
                   onClick={() => setIsCameraActive(true)}
                   className="premium-button"
@@ -248,7 +248,7 @@ export default function LiveDetectionPage() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     key={event.id} 
-                    className="flex items-center justify-between p-4 bg-white/[0.03] rounded-xl border border-white/5"
+                    className="flex items-center justify-between p-4 bg-foreground/[0.03] rounded-xl border border-foreground/5"
                   >
                     <div className="flex items-center space-x-3">
                       <div className="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
@@ -256,21 +256,21 @@ export default function LiveDetectionPage() {
                       </div>
                       <div>
                         <h4 className="text-sm font-bold">{event.name}</h4>
-                        <p className="text-[10px] text-white/30 uppercase font-black">{format(event.time, 'HH:mm:ss')}</p>
+                        <p className="text-[10px] text-foreground/30 uppercase font-black">{format(event.time, 'HH:mm:ss')}</p>
                       </div>
                     </div>
                     <div className="text-right">
                        <span className="text-xs font-black text-green-400">PERFECT</span>
-                       <p className="text-[10px] text-white/20 uppercase font-black">{event.confidence}% Match</p>
+                       <p className="text-[10px] text-foreground/20 uppercase font-black">{event.confidence}% Match</p>
                     </div>
                   </motion.div>
                 ))
               ) : (
                 <div className="flex flex-col items-center justify-center h-full text-center space-y-4">
-                  <div className="w-12 h-12 rounded-full border-2 border-dashed border-white/10 flex items-center justify-center">
-                     <Clock className="w-5 h-5 text-white/10" />
+                  <div className="w-12 h-12 rounded-full border-2 border-dashed border-foreground/10 flex items-center justify-center">
+                     <Clock className="w-5 h-5 text-foreground/10" />
                   </div>
-                  <p className="text-white/20 text-xs italic font-medium max-w-[200px]">
+                  <p className="text-foreground/20 text-xs italic font-medium max-w-[200px]">
                     {isCameraActive ? "Perform a mudra with >85% confidence to log a mastery event." : "Start camera to track session timeline."}
                   </p>
                 </div>

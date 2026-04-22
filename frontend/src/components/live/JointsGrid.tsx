@@ -36,7 +36,7 @@ export default function JointsGrid({ landmarks }: JointsGridProps) {
       <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar">
         {hand ? (
           <div className="space-y-1">
-            <div className="grid grid-cols-4 gap-2 text-[10px] font-bold text-white/30 uppercase mb-2 px-2">
+            <div className="grid grid-cols-4 gap-2 text-[10px] font-bold text-foreground/30 uppercase mb-2 px-2">
               <span>Joint</span>
               <span className="text-right">X</span>
               <span className="text-right">Y</span>
@@ -47,14 +47,14 @@ export default function JointsGrid({ landmarks }: JointsGridProps) {
                 key={i} 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className={`grid grid-cols-4 gap-2 px-2 py-1.5 rounded-md text-[11px] font-mono transition-colors ${i === 4 || i === 8 || i === 12 || i === 16 || i === 20 ? 'bg-primary/5 border-l-2 border-primary' : 'hover:bg-white/5'}`}
+                className={`grid grid-cols-4 gap-2 px-2 py-1.5 rounded-md text-[11px] font-mono transition-colors ${i === 4 || i === 8 || i === 12 || i === 16 || i === 20 ? 'bg-primary/5 border-l-2 border-primary' : 'hover:bg-foreground/5'}`}
               >
-                <span className="text-white/60 truncate" title={JOINT_LABELS[i]}>
+                <span className="text-foreground/60 truncate" title={JOINT_LABELS[i]}>
                   {i}. {JOINT_LABELS[i]}
                 </span>
-                <span className="text-right text-white/40">{land.x.toFixed(3)}</span>
-                <span className="text-right text-white/40">{land.y.toFixed(3)}</span>
-                <span className="text-right text-white/40">{land.z.toFixed(3)}</span>
+                <span className="text-right text-foreground/40">{land.x.toFixed(3)}</span>
+                <span className="text-right text-foreground/40">{land.y.toFixed(3)}</span>
+                <span className="text-right text-foreground/40">{land.z.toFixed(3)}</span>
               </motion.div>
             ))}
           </div>
@@ -62,7 +62,7 @@ export default function JointsGrid({ landmarks }: JointsGridProps) {
           <div className="flex flex-col items-center justify-center h-full space-y-4 opacity-30">
             <div className="grid grid-cols-3 gap-2">
               {[...Array(9)].map((_, i) => (
-                <div key={i} className="w-8 h-8 bg-white/10 rounded-lg animate-pulse" />
+                <div key={i} className="w-8 h-8 bg-foreground/10 rounded-lg animate-pulse" />
               ))}
             </div>
             <p className="text-xs font-medium">Capture starting...</p>

@@ -26,12 +26,12 @@ export default function ResearchPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 text-[10px] font-bold tracking-[0.2em] uppercase mb-8 backdrop-blur-md">
+            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-foreground/5 border border-foreground/10 text-foreground/60 text-[10px] font-bold tracking-[0.2em] uppercase mb-8 backdrop-blur-md">
               <FileText className="w-3 h-3" />
               <span>Technical Whitepaper</span>
             </div>
             <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter">Technology & <span className="text-primary text-shadow-glow">Research</span></h1>
-            <p className="text-white/60 text-xl leading-relaxed font-medium max-w-3xl mx-auto">
+            <p className="text-foreground/60 text-xl leading-relaxed font-medium max-w-3xl mx-auto">
               Dive deep into the mathematics, neural networks, and architecture that power the world's most advanced classical dance AI tracking engine.
             </p>
           </motion.div>
@@ -45,23 +45,23 @@ export default function ResearchPage() {
                 <Camera className="w-8 h-8" />
               </div>
               <h2 className="text-4xl font-black mb-4">Hyper-Real Tracking</h2>
-              <p className="text-white/40 font-medium">Sub-millimeter precision for exactly 21 finger mechanics per hand.</p>
+              <p className="text-foreground/40 font-medium">Sub-millimeter precision for exactly 21 finger mechanics per hand.</p>
             </div>
             
             <div className="w-full md:w-2/3 space-y-8">
               <TiltCard>
-                <div className="glass-card p-10 border-white/5 hover:border-primary/30 transition-colors">
+                <div className="glass-card p-10 border-foreground/5 hover:border-primary/30 transition-colors">
                   <h3 className="text-2xl font-bold mb-4 flex items-center"><Cpu className="w-5 h-5 mr-3 text-primary" /> Active Neural Engine Core</h3>
-                  <p className="text-white/60 leading-relaxed mb-6 font-light">
+                  <p className="text-foreground/60 leading-relaxed mb-6 font-light">
                     The foundation of NrityaVaani is built upon the highly optimized Google MediaPipe Vision framework. Instead of processing full-body kinematics, our custom pipeline strictly isolates and projects a 3D boundary box over the hands. Inside this box, a specialized convolutional neural network (CNN) predicts 21 unique 3-dimensional landmarks (x, y, z coordinates).
                   </p>
-                  <p className="text-white/60 leading-relaxed font-light">
+                  <p className="text-foreground/60 leading-relaxed font-light">
                     By operating at sub-millimeter precision using WebAssembly (WASM), we achieve ultra-low latency inference directly on the edge device, hitting 60-120 frames per second without relying on cloud processing pipelines. 
                   </p>
                 </div>
               </TiltCard>
               
-              <div className="glass-card p-8 border-white/5 bg-primary/5">
+              <div className="glass-card p-8 border-foreground/5 bg-primary/5">
                 <h4 className="font-bold text-primary mb-2 text-sm uppercase tracking-widest">Key Metric</h4>
                 <p className="text-3xl font-black">&lt; 3ms Interference Time</p>
               </div>
@@ -77,17 +77,17 @@ export default function ResearchPage() {
                 <Sparkles className="w-8 h-8" />
               </div>
               <h2 className="text-4xl font-black mb-4">Neural Correction</h2>
-              <p className="text-white/40 font-medium">Physics-based gesture correction & multi-hand synchronization.</p>
+              <p className="text-foreground/40 font-medium">Physics-based gesture correction & multi-hand synchronization.</p>
             </div>
             
             <div className="w-full md:w-2/3 space-y-8">
               <TiltCard>
-                <div className="glass-card p-10 border-white/5 hover:border-accent-gold/30 transition-colors">
+                <div className="glass-card p-10 border-foreground/5 hover:border-accent-gold/30 transition-colors">
                   <h3 className="text-2xl font-bold mb-4 flex items-center"><Activity className="w-5 h-5 mr-3 text-accent-gold" /> Spatial Heuristics</h3>
-                  <p className="text-white/60 leading-relaxed mb-6 font-light">
+                  <p className="text-foreground/60 leading-relaxed mb-6 font-light">
                     Identifying a Mudra isn't just about determining where fingers are, but rather the relative distance and depth vectors between them. Our Neural Correction engine compares the live user coordinates against a 'gold standard' geometric array generated from expert Bharatanatyam datasets.
                   </p>
-                  <p className="text-white/60 leading-relaxed font-light">
+                  <p className="text-foreground/60 leading-relaxed font-light">
                     If an index finger in the 'Tripataka' mudra deviates by more than 15 degrees from the palmar plane, our algorithm instantly flags it and triggers targeted feedback. This ensures that the aesthetic physics of the dance are preserved.
                   </p>
                 </div>
@@ -104,17 +104,17 @@ export default function ResearchPage() {
                 <TrendingUp className="w-8 h-8" />
               </div>
               <h2 className="text-4xl font-black mb-4">Advanced Analytics</h2>
-              <p className="text-white/40 font-medium">Long-term machine learning insights and dimensional mapping.</p>
+              <p className="text-foreground/40 font-medium">Long-term machine learning insights and dimensional mapping.</p>
             </div>
             
             <div className="w-full md:w-2/3 space-y-8">
               <TiltCard>
-                <div className="glass-card p-10 border-white/5 hover:border-accent-cyan/30 transition-colors">
+                <div className="glass-card p-10 border-foreground/5 hover:border-accent-cyan/30 transition-colors">
                   <h3 className="text-2xl font-bold mb-4 flex items-center"><Network className="w-5 h-5 mr-3 text-accent-cyan" /> Multi-Dimensional Models</h3>
-                  <p className="text-white/60 leading-relaxed mb-6 font-light">
+                  <p className="text-foreground/60 leading-relaxed mb-6 font-light">
                     Every session is logged via our advanced analytics pipeline. By sampling the confidence scores historically, we use polynomial regression to map out the user's trajectory of mastery. 
                   </p>
-                  <p className="text-white/60 leading-relaxed font-light">
+                  <p className="text-foreground/60 leading-relaxed font-light">
                     This allows learners and Gurus to pinpoint exact moments of hesitation or finger fatigue over long durations, essentially creating a fitness tracker specifically designed for classical choreography data models.
                   </p>
                 </div>

@@ -65,7 +65,7 @@ export default function DashboardStats() {
               <span className="w-2 h-2 bg-primary rounded-full" />
               <span>Weekly Accuracy Trend</span>
             </h3>
-            <div className="h-[300px] w-full flex items-center justify-center text-white/20 italic">
+            <div className="h-[300px] w-full flex items-center justify-center text-foreground/20 italic">
                Interactive trend chart will populate as you practice daily.
             </div>
           </div>
@@ -75,16 +75,16 @@ export default function DashboardStats() {
               <span className="w-2 h-2 bg-accent-cyan rounded-full" />
               <span>Session Frequency</span>
             </h3>
-            <div className="h-[300px] w-full flex items-center justify-center text-white/20 italic">
+            <div className="h-[300px] w-full flex items-center justify-center text-foreground/20 italic">
                Session data being tracked locally.
             </div>
           </div>
         </div>
       ) : (
-        <div className="glass-card p-20 text-center border-dashed border-white/10">
-           <Trophy className="w-16 h-16 text-white/10 mx-auto mb-6" />
+        <div className="glass-card p-20 text-center border-dashed border-foreground/10">
+           <Trophy className="w-16 h-16 text-foreground/10 mx-auto mb-6" />
            <h3 className="text-2xl font-black mb-2 italic">Begin Your Journey</h3>
-           <p className="text-white/30 max-w-md mx-auto mb-8">You haven't recorded any practice sessions yet. Start your first live detection session to see your progress here.</p>
+           <p className="text-foreground/30 max-w-md mx-auto mb-8">You haven't recorded any practice sessions yet. Start your first live detection session to see your progress here.</p>
            <button 
              onClick={() => window.location.href = '/live'}
              className="premium-button px-10"
@@ -99,14 +99,14 @@ export default function DashboardStats() {
 
 function StatCard({ icon, label, value, trend }: { icon: React.ReactNode, label: string, value: string, trend: string }) {
   return (
-    <div className="glass-card p-6 border-white/5 hover:border-white/10 transition-colors">
+    <div className="glass-card p-6 border-foreground/5 hover:border-foreground/10 transition-colors">
       <div className="flex items-center justify-between mb-4">
-        <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center">
+        <div className="w-10 h-10 bg-foreground/5 rounded-xl flex items-center justify-center">
           {icon}
         </div>
       </div>
-      <p className="text-white/40 text-xs font-bold uppercase tracking-widest mb-1">{label}</p>
-      <h4 className="text-3xl font-black text-white mb-2">{value}</h4>
+      <p className="text-foreground/40 text-xs font-bold uppercase tracking-widest mb-1">{label}</p>
+      <h4 className="text-3xl font-black text-foreground mb-2">{value}</h4>
       <p className="text-[10px] text-primary/60 font-medium">{trend}</p>
     </div>
   );

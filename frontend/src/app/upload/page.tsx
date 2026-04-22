@@ -107,7 +107,7 @@ export default function UploadAnalysisPage() {
       <div className="max-w-4xl mx-auto mb-10">
         <button 
           onClick={() => router.back()}
-          className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-all group"
+          className="w-12 h-12 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center hover:bg-foreground/10 transition-all group"
         >
           <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
         </button>
@@ -116,7 +116,7 @@ export default function UploadAnalysisPage() {
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-black mb-4">Media <span className="text-accent-pink">Analysis</span></h1>
-          <p className="text-white/40">Upload an image to get detailed AI feedback on your mudras.</p>
+          <p className="text-foreground/40">Upload an image to get detailed AI feedback on your mudras.</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
@@ -125,7 +125,7 @@ export default function UploadAnalysisPage() {
             <div 
               onClick={() => !file && fileInputRef.current?.click()}
               className={`glass-card border-dashed border-2 p-4 relative flex flex-col items-center justify-center transition-all overflow-hidden ${
-                file ? 'border-white/20' : 'border-white/10 cursor-pointer hover:bg-white/5 hover:border-primary/50 group min-h-[300px]'
+                file ? 'border-foreground/20' : 'border-foreground/10 cursor-pointer hover:bg-foreground/5 hover:border-primary/50 group min-h-[300px]'
               }`}
             >
               <input 
@@ -147,18 +147,18 @@ export default function UploadAnalysisPage() {
                   />
                   <button 
                     onClick={clearFile}
-                    className="absolute top-3 right-3 w-8 h-8 bg-black/60 backdrop-blur rounded-full flex items-center justify-center text-white hover:bg-red-500/80 transition-colors"
+                    className="absolute top-3 right-3 w-8 h-8 bg-background/60 backdrop-blur rounded-full flex items-center justify-center text-foreground hover:bg-red-500/80 transition-colors"
                   >
                     <X className="w-5 h-5" />
                   </button>
                 </div>
               ) : (
                 <>
-                  <div className="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <Upload className="w-6 h-6 text-white/40" />
+                  <div className="w-16 h-16 bg-foreground/5 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <Upload className="w-6 h-6 text-foreground/40" />
                   </div>
-                  <p className="text-white font-bold mb-2">Click to upload media</p>
-                  <p className="text-white/30 text-xs text-center">Supports JPG, PNG up to 10MB</p>
+                  <p className="text-foreground font-bold mb-2">Click to upload media</p>
+                  <p className="text-foreground/30 text-xs text-center">Supports JPG, PNG up to 10MB</p>
                 </>
               )}
             </div>
@@ -204,32 +204,32 @@ export default function UploadAnalysisPage() {
                   className="space-y-6"
                 >
                   {results.length > 0 ? results.map((result, index) => (
-                    <div key={`${result.name}-${index}`} className="relative bg-white/5 rounded-2xl p-6 border border-white/10">
-                      <p className="text-white/30 text-xs font-bold uppercase tracking-widest mb-1">{result.handedness} Hand</p>
-                      <h2 className="text-3xl font-black text-white mb-6">{result.name}</h2>
+                    <div key={`${result.name}-${index}`} className="relative bg-foreground/5 rounded-2xl p-6 border border-foreground/10">
+                      <p className="text-foreground/30 text-xs font-bold uppercase tracking-widest mb-1">{result.handedness} Hand</p>
+                      <h2 className="text-3xl font-black text-foreground mb-6">{result.name}</h2>
                       
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div className="p-4 bg-black/40 rounded-xl border border-white/5">
-                          <p className="text-[10px] text-white/30 font-bold uppercase mb-1">Confidence</p>
+                        <div className="p-4 bg-background/40 rounded-xl border border-foreground/5">
+                          <p className="text-[10px] text-foreground/30 font-bold uppercase mb-1">Confidence</p>
                           <div className="flex items-end space-x-2">
                             <h3 className="text-2xl font-bold text-primary leading-none">
                               {Math.round(result.confidence * 100)}%
                             </h3>
                           </div>
                         </div>
-                        <div className="p-4 bg-black/40 rounded-xl border border-white/5">
-                          <p className="text-[10px] text-white/30 font-bold uppercase mb-1">AI Coach</p>
-                          <p className="text-xs font-medium text-white/80 line-clamp-3 leading-relaxed">
+                        <div className="p-4 bg-background/40 rounded-xl border border-foreground/5">
+                          <p className="text-[10px] text-foreground/30 font-bold uppercase mb-1">AI Coach</p>
+                          <p className="text-xs font-medium text-foreground/80 line-clamp-3 leading-relaxed">
                             {result.feedback}
                           </p>
                         </div>
                       </div>
                     </div>
                   )) : (
-                    <div className="flex-1 flex flex-col items-center justify-center p-12 text-center bg-white/5 rounded-2xl border border-white/10">
-                      <AlertCircle className="w-10 h-10 text-white/20 mb-4" />
-                      <p className="text-white font-bold mb-2 text-lg">No Mudras Detected</p>
-                      <p className="text-sm text-white/40">The AI could not confidently identify a hand in the image. Please upload a clear photo.</p>
+                    <div className="flex-1 flex flex-col items-center justify-center p-12 text-center bg-foreground/5 rounded-2xl border border-foreground/10">
+                      <AlertCircle className="w-10 h-10 text-foreground/20 mb-4" />
+                      <p className="text-foreground font-bold mb-2 text-lg">No Mudras Detected</p>
+                      <p className="text-sm text-foreground/40">The AI could not confidently identify a hand in the image. Please upload a clear photo.</p>
                     </div>
                   )}
                 </motion.div>

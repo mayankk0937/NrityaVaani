@@ -148,7 +148,7 @@ export default function PracticeModePage() {
 
   if (!mudra) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black text-white">
+      <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Mudra not found</h1>
           <Link href="/library" className="text-primary hover:underline">Back to Library</Link>
@@ -158,7 +158,7 @@ export default function PracticeModePage() {
   }
 
   return (
-    <div className="pt-24 min-h-screen bg-[#050505] text-white px-6 pb-20 relative overflow-hidden">
+    <div className="pt-24 min-h-screen bg-[#050505] text-foreground px-6 pb-20 relative overflow-hidden">
       {/* Background Blobs */}
       <div className="bg-blob blob-violet -top-40 -left-20 opacity-20" />
       <div className="bg-blob blob-saffron -bottom-40 -right-20 opacity-10" />
@@ -169,14 +169,14 @@ export default function PracticeModePage() {
           <div className="flex items-center space-x-6">
             <button 
               onClick={() => router.back()}
-              className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-all group"
+              className="w-12 h-12 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center hover:bg-foreground/10 transition-all group"
             >
               <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
             </button>
             <div>
               <div className="flex items-center space-x-3 mb-1">
                 <span className="px-2 py-0.5 rounded bg-primary/20 text-primary text-[10px] font-black uppercase tracking-widest border border-primary/20">Practice Mode</span>
-                <span className="text-white/40 text-xs font-medium">{mudra.category}</span>
+                <span className="text-foreground/40 text-xs font-medium">{mudra.category}</span>
               </div>
               <h1 className="text-4xl md:text-5xl font-black tracking-tight">{mudra.name} <span className="text-primary italic font-serif opacity-50">/{mudra.meaning}/</span></h1>
             </div>
@@ -184,12 +184,12 @@ export default function PracticeModePage() {
 
           <div className="flex items-center space-x-4">
              {/* Language Toggle */}
-             <div className="flex bg-white/5 p-1 rounded-xl border border-white/10">
+             <div className="flex bg-foreground/5 p-1 rounded-xl border border-foreground/10">
                 <button 
                   onClick={() => setLanguage('en')}
                   className={cn(
                     "px-4 py-2 rounded-lg text-xs font-bold transition-all",
-                    language === 'en' ? "bg-primary text-black shadow-lg" : "text-white/40 hover:text-white"
+                    language === 'en' ? "bg-primary text-black shadow-lg" : "text-foreground/40 hover:text-foreground"
                   )}
                 >
                   English
@@ -198,7 +198,7 @@ export default function PracticeModePage() {
                   onClick={() => setLanguage('hi')}
                   className={cn(
                     "px-4 py-2 rounded-lg text-xs font-bold transition-all",
-                    language === 'hi' ? "bg-primary text-black shadow-lg" : "text-white/40 hover:text-white"
+                    language === 'hi' ? "bg-primary text-black shadow-lg" : "text-foreground/40 hover:text-foreground"
                   )}
                 >
                   हिंदी
@@ -209,7 +209,7 @@ export default function PracticeModePage() {
                 onClick={() => setIsVoiceEnabled(!isVoiceEnabled)}
                 className={cn(
                   "flex items-center space-x-2 px-5 py-3 rounded-xl border transition-all font-bold text-sm",
-                  isVoiceEnabled ? "bg-primary/20 border-primary/30 text-primary shadow-[0_0_20px_rgba(255,153,51,0.1)]" : "bg-white/5 border-white/10 text-white/40"
+                  isVoiceEnabled ? "bg-primary/20 border-primary/30 text-primary shadow-[0_0_20px_rgba(255,153,51,0.1)]" : "bg-foreground/5 border-foreground/10 text-foreground/40"
                 )}
              >
                {isVoiceEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
@@ -217,7 +217,7 @@ export default function PracticeModePage() {
              </button>
              <button 
                 onClick={() => setConfidence(0) /* Dummy reset for now */}
-                className="flex items-center space-x-2 px-5 py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all font-bold text-sm"
+                className="flex items-center space-x-2 px-5 py-3 rounded-xl bg-foreground/5 border border-foreground/10 hover:bg-foreground/10 transition-all font-bold text-sm"
              >
                <RotateCcw className="w-4 h-4" />
                <span>Reset</span>
@@ -229,7 +229,7 @@ export default function PracticeModePage() {
           
           {/* LEFT: LIVE FEED */}
           <div className="xl:col-span-7 space-y-6">
-            <div className="relative aspect-video glass-card overflow-hidden bg-black/60 border-white/10 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)]">
+            <div className="relative aspect-video glass-card overflow-hidden bg-background/60 border-foreground/10 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)]">
                 <CameraFeed 
                   isActive={isCameraActive} 
                   onUpdate={handleUpdate}
@@ -260,7 +260,7 @@ export default function PracticeModePage() {
                       <Camera className="w-10 h-10 text-primary" />
                     </div>
                     <h3 className="text-xl font-bold mb-2">Camera Ready</h3>
-                    <p className="text-white/40 mb-8 max-w-xs text-center">Allow camera access to start practicing with the AI coach.</p>
+                    <p className="text-foreground/40 mb-8 max-w-xs text-center">Allow camera access to start practicing with the AI coach.</p>
                     <button 
                       onClick={() => setIsCameraActive(true)}
                       className="premium-button px-10 py-4"
@@ -275,12 +275,12 @@ export default function PracticeModePage() {
 
             {/* QUICK TIPS GRID */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-               <div className="glass-card p-6 border-white/5 space-y-4">
+               <div className="glass-card p-6 border-foreground/5 space-y-4">
                   <div className="flex items-center space-x-2 text-primary">
                     <Info className="w-4 h-4" />
                     <span className="text-xs font-black uppercase tracking-widest">How to Perform</span>
                   </div>
-                  <p className="text-white/70 leading-relaxed text-sm">
+                  <p className="text-foreground/70 leading-relaxed text-sm">
                     {mudra.instructions}
                   </p>
                </div>
@@ -289,7 +289,7 @@ export default function PracticeModePage() {
                     <AlertCircle className="w-4 h-4" />
                     <span className="text-xs font-black uppercase tracking-widest">Common Mistakes</span>
                   </div>
-                  <p className="text-white/70 leading-relaxed text-sm">
+                  <p className="text-foreground/70 leading-relaxed text-sm">
                     {mudra.commonMistakes}
                   </p>
                </div>
@@ -301,25 +301,25 @@ export default function PracticeModePage() {
             
             {/* TARGET MUDRA CARD */}
             <TiltCard>
-               <div className="glass-card p-8 border-white/10 relative overflow-hidden group">
+               <div className="glass-card p-8 border-foreground/10 relative overflow-hidden group">
                   <div className="absolute -right-10 -bottom-10 opacity-5 group-hover:scale-110 transition-transform duration-700">
                     <Target className="w-64 h-64 text-primary" />
                   </div>
                   
                   <div className="relative z-10 flex items-start space-x-6">
-                     <div className="w-24 h-24 rounded-2xl overflow-hidden border border-white/10 bg-black shrink-0">
+                     <div className="w-24 h-24 rounded-2xl overflow-hidden border border-foreground/10 bg-background shrink-0">
                         <img src={mudra.image} className="w-full h-full object-cover opacity-80" alt="Mudra Reference" />
                      </div>
                      <div>
-                        <p className="text-white/40 text-[10px] font-black uppercase tracking-widest mb-1">Target Proficiency</p>
+                        <p className="text-foreground/40 text-[10px] font-black uppercase tracking-widest mb-1">Target Proficiency</p>
                         <h2 className="text-3xl font-black mb-2">{mudra.name}</h2>
                         <div className="flex items-center space-x-4">
                            <div className="flex items-center space-x-1 text-accent-gold">
                               <Sparkles className="w-4 h-4" />
                               <span className="text-xs font-bold">{mudra.difficulty}</span>
                            </div>
-                           <div className="w-1 h-1 rounded-full bg-white/20" />
-                           <span className="text-white/40 text-xs">Standard Form</span>
+                           <div className="w-1 h-1 rounded-full bg-foreground/20" />
+                           <span className="text-foreground/40 text-xs">Standard Form</span>
                         </div>
                      </div>
                   </div>
@@ -327,7 +327,7 @@ export default function PracticeModePage() {
             </TiltCard>
 
             {/* CONFIDENCE METER (PREMIUM) */}
-            <div className="glass-card p-10 border-white/5 flex flex-col items-center justify-center text-center relative overflow-hidden">
+            <div className="glass-card p-10 border-foreground/5 flex flex-col items-center justify-center text-center relative overflow-hidden">
                <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
                
                <div className="relative w-48 h-48 mb-6">
@@ -336,7 +336,7 @@ export default function PracticeModePage() {
                     <circle 
                       cx="96" cy="96" r="80" 
                       fill="none" stroke="currentColor" 
-                      strokeWidth="8" className="text-white/5" 
+                      strokeWidth="8" className="text-foreground/5" 
                     />
                     <motion.circle 
                       cx="96" cy="96" r="80" 
@@ -357,7 +357,7 @@ export default function PracticeModePage() {
                     >
                       {Math.round(confidence * 100)}%
                     </motion.span>
-                    <span className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Confidence</span>
+                    <span className="text-[10px] font-black text-foreground/30 uppercase tracking-[0.2em]">Confidence</span>
                   </div>
                   
                   {/* Glow Effect */}
@@ -376,12 +376,12 @@ export default function PracticeModePage() {
                       "inline-flex items-center space-x-2 px-4 py-2 rounded-full border text-xs font-bold transition-colors",
                       confidence > 0.8 ? "bg-green-500/10 border-green-500/20 text-green-400" :
                       confidence > 0.4 ? "bg-yellow-500/10 border-yellow-500/20 text-yellow-400" :
-                      "bg-white/5 border-white/10 text-white/40"
+                      "bg-foreground/5 border-foreground/10 text-foreground/40"
                     )}>
                       {confidence > 0.8 ? <CheckCircle className="w-4 h-4" /> : <Activity className="w-4 h-4 animate-pulse" />}
                       <span>{confidence > 0.8 ? 'Excellent Form' : confidence > 0.4 ? 'Keep Adjusting' : 'Awaiting Match'}</span>
                     </div>
-                    <p className="text-xl font-bold text-white/90 leading-relaxed max-w-sm">
+                    <p className="text-xl font-bold text-foreground/90 leading-relaxed max-w-sm">
                       {feedback}
                     </p>
                  </motion.div>
@@ -389,13 +389,13 @@ export default function PracticeModePage() {
             </div>
 
             {/* CURRENT DETECTION STATUS */}
-            <div className="glass-card p-6 border-white/5 flex items-center justify-between">
+            <div className="glass-card p-6 border-foreground/5 flex items-center justify-between">
                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
-                    <Sparkles className="w-6 h-6 text-white/40" />
+                  <div className="w-12 h-12 rounded-xl bg-foreground/5 flex items-center justify-center border border-foreground/10">
+                    <Sparkles className="w-6 h-6 text-foreground/40" />
                   </div>
                   <div>
-                    <p className="text-[10px] text-white/40 font-black uppercase tracking-widest mb-0.5">Live Detection</p>
+                    <p className="text-[10px] text-foreground/40 font-black uppercase tracking-widest mb-0.5">Live Detection</p>
                     <h4 className="font-bold text-lg">{bestDetection || 'None'}</h4>
                   </div>
                </div>
